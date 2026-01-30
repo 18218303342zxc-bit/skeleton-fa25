@@ -42,8 +42,13 @@ public class IntList {
      * This method is non-destructive, i.e. it must not modify the original list.
      */
     public static IntList incrRecursiveNondestructive(IntList L, int x) {
-        // TODO: Fill in this code
-        return null;
+        IntList M;
+        if(L == null) {
+            return null;
+        } else {
+            M = new IntList(L.first + x, incrRecursiveNondestructive(L.rest , x));
+        }
+        return M;
     }
 
     /**
@@ -52,8 +57,13 @@ public class IntList {
      * You are not allowed to use "new" in this method.
      */
     public static IntList incrRecursiveDestructive(IntList L, int x) {
-        // TODO: Fill in this code
-        return null;
+        if(L == null){
+            return null;
+        } else {
+            L.first +=  x;
+            incrRecursiveDestructive(L.rest, x);
+        }
+        return L;
     }
 
     /**
@@ -62,8 +72,15 @@ public class IntList {
      * to use recursion. May not modify the original list.
      */
     public static IntList incrIterativeNondestructive(IntList L, int x) {
-        // TODO: Fill in this code
-        return null;
+        IntList M = new IntList(L.first + x ,null);
+        IntList tem = L;
+        IntList H = M ;
+        while (tem.rest != null) {
+            tem = tem.rest;
+            H.rest = new IntList(tem.first + x ,null);
+            H = H.rest;
+        }
+        return M;
     }
 
     /**
@@ -73,8 +90,12 @@ public class IntList {
      * You are not allowed to use "new" in this method.
      */
     public static IntList incrIterativeDestructive(IntList L, int x) {
-        // TODO: Fill in this code
-        return null;
+        IntList tem = L;
+        while (tem != null){
+            tem.first += x;
+            tem = tem.rest;
+        }
+        return L;
     }
 
     /**
@@ -82,8 +103,24 @@ public class IntList {
      * elements of L2.
      */
     public static IntList concatenate(IntList L1, IntList L2) {
-        // TODO: Fill in this code
-        return null;
+
+        IntList tem = L1;
+        if (tem != null) {
+            while (tem.rest != null) {
+                tem = tem.rest;
+            }
+            if (L2 != null) {
+                tem.rest = new IntList(L2.first, L2.rest);
+            } else {
+                tem.rest = L2;
+            }
+        } else {
+            if (L2 != null){
+                L1 = L2;
+            }
+
+        }
+        return L1;
     }
 
     /*
@@ -114,6 +151,10 @@ public class IntList {
      * be destructive.
      */
     public void addFirst(int x) {
-        // Optional: Fill in this code
+
+        IntList poi = new IntList(this.first, this.rest);
+        this.first = x;
+        this.rest = poi;
+
     }
 }

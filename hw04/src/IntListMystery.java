@@ -17,6 +17,7 @@ public class IntListMystery {
             L = new IntList(nextInt, L);
             idx += 1;
         }
+        int a = L.get(500);
     }
 
     /**
@@ -24,7 +25,7 @@ public class IntListMystery {
      */
     public static int[] firstFiveNumbers() {
         // TODO: Replace the 0s with the numbers you found during debugging.
-        return new int[]{0, 0, 0, 0, 0};
+        return new int[]{21, 140, 30, 326,241};
     }
 
     /**
@@ -32,7 +33,7 @@ public class IntListMystery {
      */
     public static int middleNumber() {
         // TODO: Replace the 0 with the number you found during debugging.
-        return 0;
+        return 491;
     }
 
     public static void main(String[] args) {
