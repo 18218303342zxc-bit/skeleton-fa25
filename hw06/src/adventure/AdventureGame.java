@@ -36,7 +36,10 @@ public class AdventureGame {
         }
         AdventureStage poss;
         while (true) {
-            poss = this.parseResponse(in.readLine());
+            String line = in.readLine();        // FIX 1
+            if (line == null) return;
+
+            poss = this.parseResponse(line);
             if (poss != null) {
                 break;
             }

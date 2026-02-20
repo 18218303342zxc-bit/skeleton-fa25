@@ -36,12 +36,12 @@ public class Stack {
             prev = y;
         }
     }
-    public class Linkedlist{
+    public static class LinkedList{
         private Intnode sentine;
         private Intnode last;
         private int size;
 
-        public Linkedlist (){
+        public LinkedList (){
             sentine = new Intnode(-1,null,null);
             last = new Intnode(-1,null,null);
             sentine.next = last;

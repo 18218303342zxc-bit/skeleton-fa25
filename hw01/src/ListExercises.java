@@ -1,72 +1,44 @@
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
 
-public class JavaExercises {
-
-    /** Returns an array [1, 2, 3, 4, 5, 6] */
-    public static int[] makeDice() {
-        int[] a =  {1,2,3,4,5,6};
-        return a;
-    }
-
-    /** Returns the order depending on the customer.
-     *  If the customer is Ergun, return ["beyti", "pizza", "hamburger", "tea"].
-     *  If the customer is Erik, return ["sushi", "pasta", "avocado", "coffee"].
-     *  In any other case, return an empty String[] of size 3. */
-    public static String[] takeOrder(String customer) {
-        if (customer.equals("Ergun")) {
-            return new String[] {"beyti", "pizza", "hamburger", "tea"};
-        } else if (customer.equals("Erik")) {
-            return new String[] {"sushi", "pasta", "avocado", "coffee"};
-        } else {
-            return new String[] {null,null,null};
-        }
-
-    }
-
-    /** Returns the positive difference between the maximum element and minimum element of the given array.
-     *  Assumes array is nonempty. */
-    public static int findMinMax(int[] array) {
-        int min = 0;
-        int max = 0;
-        for (int i = 0; i < array.length; i++) {
-            if (i == 0) {
-                min = array[i];
-                max = array[i];
-            } else if (array[i] < min) {
-                min = array[i];
-            } else if (array[i] > max) {
-                max = array[i];
-            }
-
-        }
-        return max - min;
-    }
-
-    /**
-     * Uses recursion to compute the hailstone sequence as a list of integers starting from an input number n.
-     * Hailstone sequence is described as:
-     *    - Pick a positive integer n as the start
-     *        - If n is even, divide n by 2
-     *        - If n is odd, multiply n by 3 and add 1
-     *    - Continue this process until n is 1
+public class MapExercises {
+    /** Returns a map from every lower case letter to the number corresponding to that letter, where 'a' is
+     * 1, 'b' is 2, 'c' is 3, ..., 'z' is 26.
      */
-    public static List<Integer> hailstone(int n) {
-        return hailstoneHelper(n, new ArrayList<>());
-    }
-
-    private static List<Integer> hailstoneHelper(int x, List<Integer> list) {
-        list.add(x);
-        if (x == 1) {
-          return list;
-        } else if (x % 2 == 0) {
-            x = x / 2;
-            hailstoneHelper(x,list);
-        } else {
-            x = x * 3 + 1;
-            hailstoneHelper(x,list);
+    public static Map<Character, Integer> letterToNum() {
+        Map<Character,Integer> result = new TreeMap<>();
+        for (int i = 0; i < 26; i++) {
+            result.put((char)('a'+ i), i + 1);
         }
-
+        return result;
     }
 
+    /** Returns a map from the integers in the list to their squares. For example, if the input list
+     *  is [1, 3, 6, 7], the returned map goes from 1 to 1, 3 to 9, 6 to 36, and 7 to 49.
+     */
+    public static Map<Integer, Integer> squares(List<Integer> nums) {
+        Map<Integer,Integer> result = new TreeMap<>();
+        if (nums != null) {
+            for (Integer i : nums) {
+                result.put(i,i*i);
+
+            }
+        }
+        return result;
+    }
+
+    /** Returns a map of the counts of all words that appear in a list of words. */
+    public static Map<String, Integer> countWords(List<String> words) {
+        Map<String, Integer> result = new TreeMap<>();
+        for (String i : words){
+             if (result.containsKey(i)){
+                 result.replace(i,result.get(i)+1);
+             } else {
+                 result.put(i,1);
+             }
+
+        }
+        return result;
+    }
 }
