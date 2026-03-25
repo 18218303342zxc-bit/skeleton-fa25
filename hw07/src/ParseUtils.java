@@ -4,6 +4,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 // You do not need to modify or submit this file.
@@ -179,6 +180,8 @@ public class ParseUtils {
         String url = "https://en.wikipedia.org/wiki/Cat";
 
         String[] words = fetchWords(url);
-        System.out.println("The first 3 words are: " + words[0] + ", "  + words[1] + ", " + words[2]);
+        Comparator<String> vowelComparator = WordComparators.getCharListComparator(List.of('a','e','i','o','u'));
+        System.out.println(WordFinder.findMax(words,vowelComparator));
+
     }
 }
